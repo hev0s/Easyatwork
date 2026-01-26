@@ -1,4 +1,4 @@
-# --- CORRECTIF INDISPENSABLE POUR PYTHON 3.12 ---
+# ------------------------------------------------
 import os
 import sys
 
@@ -6,7 +6,6 @@ try:
     import setuptools
 except ImportError:
     pass
-# ------------------------------------------------
 
 import time
 import json
@@ -18,8 +17,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-
-# Import pour lire le fichier .env
 from dotenv import load_dotenv
 
 # Charge les variables du fichier .env
@@ -29,18 +26,18 @@ load_dotenv()
 EASY_URL = "https://app.easyatwork.com/login"
 EASY_LIST_URL = "https://app.easyatwork.com/scheduling/my/list"
 
-# Récupération des secrets depuis le fichier .env
+# Récupération de l'adresse mail et du mot de passe (mail de la personne à qui on partage) depuis le fichier .env
 EASY_USER = os.getenv("EASY_USER")
 EASY_PASS = os.getenv("EASY_PASS")
 GIRLFRIEND_EMAIL = os.getenv("GIRLFRIEND_EMAIL")
 
 # Vérification de sécurité pour ne pas lancer le script si le .env est mal fait
 if not EASY_USER or not EASY_PASS:
-    print("❌ ERREUR CRITIQUE : Identifiants introuvables.")
-    print("👉 Assure-toi d'avoir créé un fichier '.env' avec EASY_USER et EASY_PASS dedans.")
+    print("❌ ERREUR : Identifiants introuvables.")
+    print("👉 Il faut un fichier '.env' avec EASY_USER et EASY_PASS dedans.")
     sys.exit()
 
-# Fichier historique
+# Fichier historique des horaires
 HISTORY_FILE = "historique_shifts.json"
 
 
@@ -81,7 +78,7 @@ def load_and_clean_history():
 
     return cleaned_set
 
-
+# Pour google calendar
 def convert_to_iso(date_text, time_text):
     months = {
         "janv.": "01", "févr.": "02", "mars": "03", "avr.": "04",
@@ -103,7 +100,7 @@ def convert_to_iso(date_text, time_text):
     except Exception:
         return None
 
-
+# Parce que chrome detecte les scripts
 def get_stealth_driver():
     print("🚀 Lancement du navigateur...")
     current_folder = os.path.dirname(os.path.abspath(__file__))
@@ -206,7 +203,7 @@ def add_to_google_calendar(driver, shifts):
     print(f"\n--- 2. Ajout Google Agenda ({len(new_shifts)} nouveaux) ---")
     driver.get("https://calendar.google.com/")
     time.sleep(3)
-
+    # Normalement une seule fois
     if "signin" in driver.current_url or "ServiceLogin" in driver.current_url:
         print("\n⚠️  CONNEXION REQUISE À GOOGLE")
         while "calendar.google.com" not in driver.current_url:
