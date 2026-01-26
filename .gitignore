@@ -1,0 +1,16 @@
+# --- Fichiers Secrets (NE JAMAIS ENVOYER SUR GITHUB) ---
+.env
+.env.local
+
+# --- Session Chrome (Cookies, Historique) ---
+chrome_profile/
+
+# --- Fichiers temporaires et logs ---
+__pycache__/
+*.log
+historique_shifts.json
+
+# --- Configuration PyCharm et Environnement ---
+.idea/
+.venv/
+venv/
