@@ -1,0 +1,27 @@
+name: Super-Linter Python
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Récupérer le code
+      - name: Checkout du code
+        uses: actions/checkout@v3
+        with:
+          # Super-Linter a besoin de l'historique complet pour bien fonctionner
+          fetch-depth: 0
+
+      # Étape 2 : Exécuter le linter
+      - name: Lint du code Python
+        uses: super-linter/super-linter@v5
+        env:
+          # Permet au linter de commenter ou mettre à jour les statuts sur GitHub
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # On indique au linter de NE PAS tout valider, mais seulement ce qu'on précise
+          VALIDATE_ALL_CODEBASE: false
+
+          # On active spécifiquement un linter Python (Flake8 est le plus standard)
+          VALIDATE_PYTHON_FLAKE8: true
