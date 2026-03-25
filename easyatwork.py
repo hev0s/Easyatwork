@@ -29,7 +29,7 @@ EASY_LIST_URL = "https://app.easyatwork.com/scheduling/my/list"
 # Récupération de l'adresse mail et du mot de passe (mail de la personne à qui on partage) depuis le fichier .env
 EASY_USER = os.getenv("EASY_USER")
 EASY_PASS = os.getenv("EASY_PASS")
-GIRLFRIEND_EMAIL = os.getenv("GIRLFRIEND_EMAIL")
+CONTACT_EMAIL = os.getenv("CONTACT_EMAIL")
 
 # Vérification de sécurité pour ne pas lancer le script si le .env est mal fait
 if not EASY_USER or not EASY_PASS:
@@ -219,8 +219,8 @@ def add_to_google_calendar(driver, shifts):
         base_link = f"https://calendar.google.com/calendar/render?action=TEMPLATE&text={text}&dates={dates}&location={location}"
 
         # On utilise ici la variable récupérée du .env
-        if GIRLFRIEND_EMAIL and "@" in GIRLFRIEND_EMAIL:
-            base_link += f"&add={GIRLFRIEND_EMAIL}"
+        if CONTACT_EMAIL and "@" in CONTACT_EMAIL:
+            base_link += f"&add={CONTACT_EMAIL}"
 
         driver.get(base_link)
 

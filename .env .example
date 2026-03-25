@@ -1,4 +1,4 @@
 # Remplissez vos informations ci-dessous et renommez ce fichier en .env
 EASY_USER=votre_email@exemple.com
 EASY_PASS=votre_mot_de_passe
-GIRLFRIEND_EMAIL=email_invité@gmail.com
+CONTACT_EMAIL=email_invité@gmail.com
