@@ -113,8 +113,7 @@ def get_stealth_driver():
     driver = uc.Chrome(
         options=options,
         user_data_dir=profile_path,
-        use_subprocess=True,
-        version_main = 144 #Version de chrome
+        use_subprocess=True
     )
     driver.maximize_window()
     return driver
