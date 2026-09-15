@@ -114,7 +114,7 @@ def get_stealth_driver():
         options=options,
         user_data_dir=profile_path,
         use_subprocess=True,
-        version_main=146  # A supprimer ou adapter si erreur
+        # version_main=152  # A supprimer ou adapter si erreur
     )
     driver.maximize_window()
     return driver
