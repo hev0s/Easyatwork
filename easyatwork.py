@@ -1,3 +1,4 @@
+"""
 # ------------------------------------------------
 import os
 import sys
@@ -101,7 +102,7 @@ def convert_to_iso(date_text, time_text):
 
 
 def clear_uc_cache():
-    """Supprime le dossier cache de undetected_chromedriver"""
+    //Supprime le dossier cache de undetected_chromedriver
     appdata = os.getenv('APPDATA')
     if appdata:
         uc_cache = os.path.join(appdata, 'undetected_chromedriver')
@@ -114,7 +115,7 @@ def clear_uc_cache():
 
 
 def clean_profile_completely(profile_path):
-    """En cas de corruption grave, on supprime tout le profil défectueux."""
+    //En cas de corruption grave, on supprime tout le profil défectueux.
     if os.path.exists(profile_path):
         try:
             shutil.rmtree(profile_path)
@@ -607,4 +608,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-"""
